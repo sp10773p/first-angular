@@ -9,4 +9,7 @@ export class LangSelectorBtnPipe implements PipeTransform {
     return `${lang.name} (${lang.code})`;
   }
 
+  /*transform(name:string, code:string): any {
+    return `${name} (${code})`;
+  }*/
 }
