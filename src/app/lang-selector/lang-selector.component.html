@@ -1,22 +1,8 @@
-<div id="lang-selector">
-  <div class="lang-box">
-    <img src="/assets/img/South_Korea.png">
-    <label *ngIf="langCode === 'ko'">선택됨</label>
-    <button type="button" (click)="setLangCode('ko')"
-      [disabled]="langCode === 'ko'">한국어</button>
-  </div>
-  <div class="lang-box">
-    <img src="/assets/img/United_States.png">
-    <label *ngIf="langCode === 'us'">선택됨</label>
-    <button type="button" (click)="setLangCode('us')"
-      [disabled]="langCode === 'us'">영어</button>
-  </div>
-  <div class="lang-box">
-    <img src="/assets/img/China.png">
-    <label *ngIf="langCode === 'cn'">선택됨</label>
-    <button type="button" (click)="setLangCode('cn')"
-      [disabled]="langCode === 'cn'">중국어</button>
-  </div>
-
-  <!-- 다른 언어 템플릿 생략 -->
-</div>
+<mat-card>
+  <mat-radio-group [(ngModel)]="langCode" (change)="syncToService($event.value)">
+    <mat-radio-button *ngFor="let lang of langMetaData" [value]="lang.code">
+      {{lang | langSelectorBtn}}
+      <img src="{{'/assets/img/' + lang.flagImgName}}">
+    </mat-radio-button>
+  </mat-radio-group>
+</mat-card>
